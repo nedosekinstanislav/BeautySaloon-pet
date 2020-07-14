@@ -12,6 +12,7 @@ class Specialist < ActiveRecord::Base
 end
 
 get '/' do
-  erb 'hello'
+  @specialists = Specialist.all
+  erb :index
 end
 
