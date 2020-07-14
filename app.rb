@@ -6,6 +6,10 @@ require 'sinatra/activerecord'
 set :database, {adapter: "sqlite3", database: "beatysalon.db"}
 
 class Client < ActiveRecord::Base
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :datestamp, presence: true
+  validates :color, presence: true
 end
 
 class Specialist < ActiveRecord::Base
@@ -28,22 +32,17 @@ get '/about' do
 end
 
 get '/visit' do
+  @c = Client.new
   erb :visit
 end
 
 post '/visit' do
 
-  @username = params[:username]
-  @phone = params[:phone]
-  @datetime = params[:datetime]
-  @specialist = params[:specialist]
-  @color = params[:color]
-
-  hh = {
-    :username => 'Введите имя', 
-    :phone => 'Введите телефон', 
-    :datetime => 'Введите дату и время'
-  }
-
-  erb "<h2>Спасибо, мы ждем вас!</h2>"
+  @c = Client.new params[:client]
+    if @c.save
+      erb "<h2>Спасибо, мы ждем вас!</h2>"
+    else
+      @error = @c.errors.full_messages.first
+      erb :visit
+    end
 end
