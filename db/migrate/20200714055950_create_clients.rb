@@ -1,13 +1,13 @@
 class CreateClients < ActiveRecord::Migration[6.0]
   def change
-    create_table :client  do |item|
-      item.text :name
-      item.text :phone
-      item.text :datestamp
-      item.text :specialist
-      item.text :color
+    create_table :client  do |t|
+      t.text :name
+      t.text :phone
+      t.text :datestamp
+      t.text :specialist
+      t.text :color
 
-      item.timestamps
+      t.timestamps
     end
   end
 end

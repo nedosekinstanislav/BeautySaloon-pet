@@ -3,9 +3,12 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:beatysalon.db"
+set :database, {adapter: "sqlite3", database: "beatysalon.db"}
 
 class Client < ActiveRecord::Base
+end
+
+class Specialist < ActiveRecord::Base
 end
 
 get '/' do
