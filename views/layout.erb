@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<title>Beauty saloon</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/style/bootstrap.min.css">
+	<!-- Script link -->
+	<script src="/vendor/script/bootstrap.min.js"></script>
+  </head>
+  <body>
+		<div class="container">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="/">Beauty saloon</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div>
+				<%if @error then %>
+						<div class="alert alert-error"><%=@error%></div>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
+  </body>
+</html>
+
