@@ -31,6 +31,11 @@ get '/about' do
   erb :about
 end
 
+get '/bookings' do
+  @clients = Client.order('created_at DESC')
+  erb :bookings
+end
+
 get '/visit' do
   @c = Client.new
   erb :visit
@@ -45,4 +50,14 @@ post '/visit' do
       @error = @c.errors.full_messages.first
       erb :visit
     end
+end
+
+get '/specialist/:id' do
+  @specialist = Specialist.find(params[:id])
+  erb :specialist  
+end
+
+get '/client/:id' do
+  @client = Client.find(params[:id])
+  erb :client
 end

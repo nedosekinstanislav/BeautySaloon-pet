@@ -1,1 +1,7 @@
 <h2>Добро пожловать в наш салон красоты</h2>
+
+<% @specialists.each do |item| %>
+    <p>
+        <a href="/specialist/<%= item.id %>"><%= item.name %></a>
+    </p>
+<% end %>
